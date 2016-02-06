@@ -1,0 +1,117 @@
+put some images wherever needed!!!
+
+
+1.
+Heat or Cool It - FUZZY
+
+Amit Bhojwani
+Avanti Narayanan
+Keta Amichandwala
+Murtaza Dhuliawala
+
+2.(Fuzzy Logic (FL)):
+The concept of Fuzzy Logic (FL) was conceived by Lotfi Zadeh, a professor at the University of California at Berkley
+FL is a form of probabilistic logic which deals with approximate results.
+It incorporates a simple, rule-based IF X AND Y THEN Z approach to solving a control problem.
+for eg. If water is too cold while taking a shower, you tend to move the valve towards hot water!
+
+3.(Application of Fuzzy Logic):
+
+FL lends itself to implementation in systems ranging from simple, small,embedded micro-controllers 
+  to large, networked, multi-channel PC or control systems.
+
+In air conditioners, dehumidification and temperature decrease goes hand in hand. However, the complex interactions
+ 	between user preferences, room temperature and hunidity level are very difficult to achieve mathematically. 
+             FL provides a solution for the same!
+
+FL is also used in washing machines, where the length of wash is determined by the volume of clothes and dirt.
+        There was no suitable alternative to personal trial and error.
+
+4.(Problem Description):
+
+We are implementing a temperature controller system using fuzzy logic.
+This controller can be applied to any system which we need to maintain at a particular temperature!
+The Fuzzy temperature controller will make use of two parameters :
+1. Constant temperature as per the requirement(Cmd). 
+2. Instantaneous temperature of the system(Temp).
+
+5.():
+
+image fig 1 part 3 (block diag)
+IF temperature IS cold THEN heat
+IF temperature IS normal THEN maintain level
+IF temperature IS hot THEN cool
+
+6.(Conceptual Design):
+
+In our implementation,  fuzzy parameters of error (command-feedback) and error-dot (rate-of-change-of-error)are modified by the 
+      adjectives "negative", "zero", and "positive".
+
+For a meaningful interpretation of the rule matrix, we use the following notations :
+
+"N" = "negative" error or error-dot input level
+"Z" = "zero" error or error-dot input level
+"P" = "positive" error or error-dot input level
+"H" = "Heat" output response
+"-" = "No Change" to current output
+"C" = "Cool" output response
+
+7.():
+
+A rule matrix is a 3x3 matrix.
+The columns represent "negative", "zero", and "positive" "error" inputs from left to right.
+The rows represent "negative", "zero", and "positive" "error-dot" input from top to bottom. 
+image of matrix!
+
+8.(Example):
+
+case 1 eg(fig 9) call murtaza
+
+INPUT DEGREE OF MEMBERSHIP
+
+"error" = -1.0: "negative" = 0.5, "zero" = 0.5, "positive" = 0.0
+"error-dot" = +2.5: "negative" = 0.0, "zero" = 0.5, "positive" = 0.5
+ 
+1. If (e < 0) AND (er < 0) then Cool 0.50 & 0.00 = 0.00
+2. If (e = 0) AND (er < 0) then Heat 0.50 & 0.00 = 0.00
+3. If (e > 0) AND (er < 0) then Heat 0.00 & 0.00 = 0.00
+4. If (e < 0) AND (er = 0) then Cool 0.50 & 0.50 = 0.50
+5. If (e = 0) AND (er = 0) then No_Chng 0.50 & 0.50 = 0.50
+6. If (e > 0) AND (er = 0) then Heat 0.00 & 0.50 = 0.00
+7. If (e < 0) AND (er > 0) then Cool 0.50 & 0.50 = 0.50
+8. If (e = 0) AND (er > 0) then Cool 0.50 & 0.50 = 0.50
+9. If (e > 0) AND (er > 0) then Heat 0.00 & 0.50 = 0.00
+
+9.()
+fig 10
+
+"negative" = (R1^2 + R4^2 + R7^2 + R8^2) (Cooling) = (0.00^2 + 0.50^2 + 0.50^2 + 0.50^2)^.5 = 0.866
+"zero" = (R5^2)^.5 = (0.50^2)^.5 (No Change) = 0.500
+"positive" = (R2^2 + R3^2 + R6^2 + R9^2) (Heating) = (0.00^2 + 0.00^2 + 0.00^2 + 0.00^2)^.5 = 0.000
+
+(neg_center * neg_strength + zero_center * zero_strength + pos_center * pos_strength) = OUTPUT
+(neg_strength + zero_strength + pos_strength)
+ 
+(-100 * 0.866 + 0 * 0.500 + 100 * 0.000) = -63.4% (cooling)
+(0.866 + 0.500 + 0.000)
+
+10.(System Requirements):
+
+//put some images
+
+bullets:
+Arduino Microcontroller Board
+Temperature and humidity sensors
+LEDs and Breadboard
+Arduino Compiler
+
+11.(References):
+
+[1] Steven D. Kaehler, Seattlerobotics.org
+
+[2] Srismrita Basu, Realization of Fuzzy Logic Temperature Controller, International Journal of Emerging Technology and Advanced Engineering,
+    Volume 2, Issue 6, June 2012) 
+
+[3] R.M. Aguilar, V. Muñoz and Y. Callero, "Control Application Using Fuzzy Logic:  Design of a Fuzzy Temperature Controller", University of La Laguna, Spain
+
+[4]  D.G. Schartz & G.J. Klir, "Fuzzy Logic Flowers", IEEE Spectrum, July 1992, pp. 32-35

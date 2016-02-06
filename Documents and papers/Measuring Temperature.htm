@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<!-- saved from url=(0076)http://www.facstaff.bucknell.edu/mastascu/elessonsHTML/Sensors/TempLM35.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; I) [Netscape]">
+   <title>Measuring Temperature</title>
+<script language="JavaScript">
+	var RightAnswer, UserAnswer, Delta;
+	var Factor, Alpha = 500000, Rightness = 1;
+
+	function evaluateAnswer(form, RightAnswer){
+		UserAnswer = eval(form.InputValue.value);
+		Delta = (UserAnswer-RightAnswer)/RightAnswer;
+		Factor = Alpha * Delta * Delta * Delta * Delta * Delta * Delta;
+		Rightness = Math.floor((100*Rightness)/(1 + Factor));
+		form.Grade.value=Rightness;
+		Rightness = 1;
+	
+	}
+
+
+</script>
+</head>
+<body background="./Measuring Temperature_files/Bkgrnd66.JPG">
+<font face="Comic Sans MS"><font color="#CC0000"><font size="+2">Temperature
+Sensor - The LM35</font></font></font>
+<p><font face="Comic Sans MS"><font size="-2">You are at:&nbsp; Elements
+- Sensors - LM35</font></font>
+<br><font face="Comic Sans MS"><font size="-2"><a href="http://www.facstaff.bucknell.edu/mastascu/elessonsHTML/StartEE.html">Return
+to Table of Contents
+</a></font></font></p><hr width="100%"><font face="Comic Sans MS">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+The LM35 is an integrated circuit sensor that can be used to measure temperature
+with an electrical output proportional to the temperature (<font color="#000000">in
+<b><sup>o</sup></b>C</font>)</font>
+<p>
+</p><hr width="100%"><font face="Comic Sans MS"><font color="#FF0000">T</font><font color="#CC0000">he
+LM35 - An Integrated Circuit Temperature Sensor</font></font>
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#000066">Why Use LM35s To Measure
+Temperature?</font></font></li>
+
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#006600">You can measure temperature
+more accurately than a using a thermistor.</font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#006600">The sensor circuitry is
+sealed and not subject to oxidation, etc.</font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#006600">The LM35 generates a higher
+output voltage than thermocouples and may not require that the output voltage
+be amplified.</font></font></li>
+</ul>
+</ul>
+
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#000066">What Does An LM35 Look
+Like?</font></font></li>
+
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#006600">Here it is.</font></font></li>
+</ul>
+</ul>
+
+<center><img src="./Measuring Temperature_files/LM35.jpg" height="221" width="275"></center>
+
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#000066">What Does an LM35 Do?&nbsp;
+How does it work?</font></font></li>
+
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#006600">It has an output voltage
+that is proportional to the Celsius temperature.</font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#006600">The scale factor is .01V/<b><sup>o</sup></b>C</font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#006600">The LM35 does not require
+any external calibration or trimming and maintains an accuracy of&nbsp;
++/-0.4 <b><sup>o</sup></b>C at room temperature and +/- 0.8 <b><sup>o</sup></b>C
+over a range of 0 <b><sup>o</sup></b>C to +100 <b><sup>o</sup></b>C.</font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#006600">Another important characteristic
+of the LM35DZ is that it draws only 60 micro amps from its supply and possesses
+a low self-heating capability. The sensor self-heating causes less than
+0.1 <sup>o</sup>C temperature rise in still air.</font></font></li>
+</ul>
+</ul>
+<font face="Comic Sans MS">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The
+LM35 comes in many different packages, including the following.</font>
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#990000">TO-92 plastic transistor-like
+package,</font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#990000">T0-46 metal can transistor-like
+package</font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#990000">8-lead surface mount SO-8
+small outline package</font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#990000">TO-202 package. (Shown
+in the picture above)</font></font></li>
+</ul>
+
+<ul>
+<li>
+<a name="LM35Circuit"></a><font face="Comic Sans MS"><font color="#000066">How
+Do You Use An LM35?&nbsp; (Electrical Connections)</font></font></li>
+
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#006600">Here is a commonly used
+circuit.&nbsp; For connections refer to the picture above.</font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#006600">In this circuit, parameter
+values commonly used are:</font></font></li>
+
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#006600">V<sub>c</sub> = 4 to 30v</font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#006600">5v or 12 v are typical
+values used.</font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#006600">R<b><sub>a</sub></b> =
+V<b><sub>c</sub></b> /10<b><sup>-6</sup></b></font></font></li>
+
+<li>
+<font color="#006600"><font face="Comic Sans MS">Actually, it can range
+from 80 K</font><b><font face="Symbol">W</font></b><font face="Comic Sans MS">
+to 600 K</font><b><font face="Symbol">W</font></b><font face="Comic Sans MS">
+, but most just use 80 K</font><b><font face="Symbol">W</font></b><font face="Comic Sans MS">.</font></font></li>
+</ul>
+</ul>
+</ul>
+
+<center><img src="./Measuring Temperature_files/SensorLM35Ckt.gif" height="193" width="194"></center>
+
+<ul>
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#006600">Here is a photo of the
+LM 35 wired on a circuit board.</font></font></li>
+
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#006600">The white wire in the
+photo goes to the power supply.</font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#006600">Both the resistor and
+the black wire go to ground.</font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#006600">The output voltage is
+measured from the middle pin to ground.l</font></font></li>
+</ul>
+</ul>
+</ul>
+
+<center><img src="./Measuring Temperature_files/LM35Ckt.jpg" height="245" width="274"></center>
+
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#000066">What Can You Expect When
+You Use An LM35?</font></font></li>
+
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#006600">You will need to use a
+voltmeter to sense Vout.</font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#006600">The output voltage is
+converted to temperature by&nbsp; a simple conversion factor.</font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#006600">The sensor has a sensitivity
+of 10mV / <b><sup>o</sup></b>C.</font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#006600">Use a conversion factor
+that is the reciprocal, that is 100 <b><sup>o</sup></b>C/V.</font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#006600">The general equation used
+to convert output voltage to temperature is:</font></font></li>
+
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#006600">Temperature ( <b><sup>o</sup></b>C)
+= Vout * (100 <b><sup>o</sup></b>C/V)</font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#006600">So if&nbsp; Vout&nbsp;
+is&nbsp; 1V , then, Temperature = 100 <b><sup>o</sup></b>C</font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#006600">The output voltage varies
+linearly with temperature.</font></font></li>
+</ul>
+</ul>
+
+<li>
+<font face="Comic Sans MS"><font color="#000066">What If You Want More
+Data On The LM35?</font></font></li>
+
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#006600"><a href="http://www.facstaff.bucknell.edu/mastascu/elessonsHTML/Sensors/LM35.pdf">Click
+here</a> to get the National Semiconductor data sheet for the LM35.</font></font></li>
+</ul>
+</ul>
+
+<hr width="100%"><font face="Comic Sans MS"><font color="#990000">Problem</font></font>
+<p><font face="Comic Sans MS"><font color="#990000">P1.&nbsp;&nbsp; </font><font color="#000099">In
+using an LM35, you obtain an output voltage of 0.173 v.&nbsp; What is the
+temperature (in <b><sup>o</sup></b>C)?</font></font>
+<br></p><form method="POST" name="Q2"><font face="Comic Sans MS"><font color="#000099">Enter
+your answer in the box below, then click the button to submit your answer.&nbsp;
+You will get a grade on a 0 (completely wrong) to 100 (perfectly accurate
+answer) scale.</font></font>
+<center><input type="text" ,="" name="InputValue"><input type="button" value="Check My Answer" onclick="evaluateAnswer(this.form,17.3);">
+<p><font face="Comic Sans MS"><font color="#990000">Your grade is:</font></font><input type="text" ,="" name="Grade"></p></center></form>
+
+<br>&nbsp;
+<p><br>
+</p><p>
+</p><hr width="100%"><font face="Comic Sans MS"><font color="#990000">Links
+to Related Lessons</font></font>
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#990000">Temperature Sensors</font></font></li>
+
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#990000"><a href="http://www.facstaff.bucknell.edu/mastascu/elessonsHTML/Sensors/TempR.html">Thermistors</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#990000"><a href="http://www.facstaff.bucknell.edu/mastascu/elessonsHTML/Sensors/TempThermCpl.html">Thermocouples</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#990000">LM35s</font></font></li>
+</ul>
+
+<li>
+<font face="Comic Sans MS"><font color="#990000">Other Sensors</font></font></li>
+
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#990000"><a href="http://www.facstaff.bucknell.edu/mastascu/elessonsHTML/Sensors/StrainGage.htm">Strain
+Gages</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#990000">Temperature</font></font></li>
+</ul>
+
+<li>
+<font face="Comic Sans MS"><font color="#990000"><a href="http://www.facstaff.bucknell.edu/mastascu/elessonsHTML/TOC_LabExp.html#Sensors">Sensor
+Laboratories</a></font></font></li>
+</ul>
+
+<hr width="100%">
+
+
+</body></html>
